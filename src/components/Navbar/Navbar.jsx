@@ -1,48 +1,76 @@
-import { useState } from "react";
 import { IoIosArrowDown } from "react-icons/io";
-const Navbar = () => {
-    const [lang, setLang] = useState(false);
-    const [value, setValue] = useState("English");
+import logo from "../../assets/images/logo.png";
+import { LuSearch } from "react-icons/lu";
+import { IoMdHeartEmpty } from "react-icons/io";
+import { IoCartOutline } from "react-icons/io5";
+import { LuUser } from "react-icons/lu";
 
-    // const handleValue = () => {
-    //     setValue("Bangla");
-    //     setLang(false);
-    // }
-    const handleValue = () => {
-        setValue(value === 'English' ? 'Bangla' : 'English');
-        setLang(false);
-    }
+
+const Navbar = () => {
+
     return (
         <>
-            <nav className='bg-[#000000]'>
-                <div className="container">
-                    <div className="flex items-center py-3">
-                        <div className=" w-[80%] text-end">
-                            <p className="text-[#ffffff] text-[14px] font-poppins leading-[21px] ">Summer Sale For All Swim Suits And Free Express Delivery - OFF 50%!
-                                <a href="#" className="font-semibold leading-6 underline">Shop Now</a></p>
-                        </div>
-                        <div className=" w-[20%] text-end">
-                            <div className="flex justify-end gap-2.5 ">
-                                <div className="flex flex-col p-1 rounded-[5px] relative">
-                                    <a href="#" className="text-[#ffffff] text-[14px] font-poppins leading-[21px] ">{value}</a>
-
-                                    {/* {
-                                        lang &&
-                                        <a href="#" className="absolute top-full left-0 px-2 bg-[#ef7d7d] text-[#ffffff] text-[14px] font-poppins leading-[21px] transition-all duration-200 opacity-100 scale-100 origin-top" 
-                                        onClick={handleValue}>{value == 'Bangla' ? 'English' : 'Bangla'}</a>
-                                    } */}
-                                    <a
-                                        href="#"
-                                        onClick={handleValue}
-                                        className={`
-                                        absolute top-full left-0 px-2 bg-[#ef7d7d] text-[#ffffff] text-[14px] font-poppins leading-[21px] rounded-[5px] transition-all duration-200 origin-top
-                                        ${lang ? "opacity-100 scale-100 pointer-events-auto" : "opacity-0 scale-95 pointer-events-none"}
-                                        `}
-                                    >
-                                        {value == 'Bangla' ? 'English' : 'Bangla'}
-                                    </a>
-                                    <IoIosArrowDown onClick={() => setLang(!lang)} className="text-white text-[18px] cursor-pointer absolute top-2 -right-5" />
+            <nav >
+                <div className='bg-[#000000]'>
+                    <div className="container">
+                        <div className="flex items-center py-3">
+                            <div className=" w-[80%] text-end">
+                                <p className="text-[#ffffff] text-[14px] font-poppins leading-[21px] ">Summer Sale For All Swim Suits And Free Express Delivery - OFF 50%!
+                                    <a href="#" className="font-semibold leading-6 underline">Shop Now</a></p>
+                            </div>
+                            <div className="w-[20%] text-end">
+                                <div className='flex justify-end gap-[9px] items-center'>
+                                    <div class="relative w-22">
+                                        <select class="appearance-none w-full px-3 outline-0 font-popins text-[14px] leading-[21px] text-[#FAFAFA] font-normal cursor-pointer">
+                                            <option className='text-black'>English</option>
+                                            <option className='text-black'>Bangla</option>
+                                        </select>
+                                        <span class="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2">
+                                            <IoIosArrowDown className='text-[18px] text-[#FAFAFA] mt-1' />
+                                        </span>
+                                    </div>
                                 </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div className="container">
+                    <div className="pt-10 pb-4 flex items-center">
+                        <div className="w-[10%]">
+                            <div className="logo">
+                                <a href="#">
+                                    <img src={logo} alt="logo" />
+                                </a>
+                            </div>
+                        </div>
+                        <div className="w-[60%]">
+                            <ul className="menus flex justify-center gap-10">
+                                <li><a href="#">Home</a></li>
+                                <li><a href="#">About</a></li>
+                                <li><a href="#">Contact</a></li>
+                                <li><a href="#">Sign Up</a></li>
+                            </ul>
+                        </div>
+                        <div className="w-[30%] flex items-center justify-end gap-6">
+                            <div className="W-[243px] relative">
+                                <input className="outline-0 bg-[#F5F5F5] py-2.5 ps-4 pe-10 w-full text-[12px] leading-[18px rounded-sm font-poppins" type='text' placeholder="What are you looking for?" />
+                                <LuSearch className="absolute top-[50%] translate-y-[-50%] right-4 cursor-pointer" />
+
+                            </div>
+                            <div className="flex justify-center items-center gap-4">
+
+                                <div className="w-8 h-8 hover:hover:bg-[#DB4444] duration-200 flex justify-center items-center rounded-full cursor-pointer group">
+                                    <IoMdHeartEmpty className="text-[18px] text-[#000000] group-hover:text-white duration-200 " />
+                                </div>
+
+                                <div className="w-8 h-8 hover:hover:bg-[#DB4444] flex justify-center items-center rounded-full cursor-pointer group">
+                                    <IoCartOutline className="text-[18px] text-[#000000] group-hover:text-white duration-200 " />
+                                </div>
+
+                                <div className="w-8 h-8 hover:hover:bg-[#DB4444] flex justify-center items-center rounded-full cursor-pointer group">
+                                    <LuUser className="text-[18px] text-[#000000] group-hover:text-white duration-200 " />
+                                </div>
+
                             </div>
                         </div>
                     </div>
