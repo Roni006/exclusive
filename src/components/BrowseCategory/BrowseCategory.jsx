@@ -43,7 +43,7 @@ const BrowseCategory = () => {
                         </div> 
 
                         <div className="item">
-                            <div className="border-2 border-[rgba(0,0,0,0.3)] rounded-sm py-[25px] px-[55px] text-center cursor-pointer">
+                            <div className="border-2 border-[rgba(0,0,0,0.3)] rounded-sm py-[25px] px-[35px] text-center cursor-pointer">
                                 <img className="mx-auto" src={headphone} alt="" />
                                 <p className="text-[16px] leading-6 text-[#000000] font-poppins font-normal pt-4">HeadPhones</p>
                             </div>
