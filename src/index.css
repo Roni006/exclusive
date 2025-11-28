@@ -32,11 +32,10 @@
     @apply w-full;
 }
 
-/* ! header menu */
+/* ! header menu */ 
 
-/* ! header menu */
-/* .menus a {
-    @apply text-[16px] text-black font-normal font-poppins leading-6;
-} */
-
-/* ! header menu */
+/* ! new arrival menu */
+.gblbtn{
+    @apply font-medium font-poppins text-[16px] text-[#FAFAFA] leading-6 py-4 px-12 bg-[#DB4444] rounded-[5px] 
+}
+/* ! new arrival menu */
