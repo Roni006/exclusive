@@ -17,9 +17,9 @@
 /* ! header menu */
 .menus li a, .category a {
     @apply text-black text-[16px] leading-6 font-normal font-poppins relative;
-}
+} 
 
-.menus li a:hover {
+.menus li a:hover, .fmenu a:hover {
     @apply text-[#DB4444] duration-200;
 
 }
@@ -39,3 +39,7 @@
     @apply font-medium font-poppins text-[16px] text-[#FAFAFA] leading-6 py-4 px-12 bg-[#DB4444] rounded-[5px] 
 }
 /* ! new arrival menu */
+
+.fmenus a img:hover{
+    @apply text-[#DB4444]
+}
