@@ -4,7 +4,8 @@ import App from './App.jsx'
 import { createBrowserRouter } from "react-router";
 import { RouterProvider } from "react-router/dom";
 import WishList from './components/WishList/WishList.jsx';
-import MainRoot from './components/MainRoot/MainRoot.jsx';
+import MainRoot from './components/MainRoot/MainRoot.jsx'; 
+import Cart from './components/Cart/Cart.jsx';
 const router = createBrowserRouter([
   {
     path: "/",
@@ -12,6 +13,7 @@ const router = createBrowserRouter([
     children: [
       { index: true, Component: App },
       { path: "wishlist", Component: WishList },
+      { path: "cart", Component: Cart },
       
     ],
   },

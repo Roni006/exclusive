@@ -9,42 +9,53 @@
 @theme {
     --font-poppins: "Poppins", sans-serif;
     --font-inter: "Inter", sans-serif;
+    --shadow-cart: 0px 1px 13px rgba(0, 0, 0, 0.05);
 }
 
 /* ! Initial set up */
 
 
 /* ! header menu */
-.menus li a, .category a {
+.menus li a,
+.category a {
     @apply text-black text-[16px] leading-6 font-normal font-poppins relative;
-} 
+}
 
-.menus li a:hover, .fmenu a:hover {
+.menus li a:hover,
+.fmenu a:hover {
     @apply text-[#DB4444] duration-200;
 
 }
 
 .menus li a::after {
-    @apply absolute w-0 content-[""] h-0.5 bg-[rgba(0,0,0,0.25)] left-0 bottom-[-5px] duration-500;
+    @apply absolute w-0 content-[""] h-0.5 bg-[rgba(0, 0, 0, 0.25)] left-0 bottom-[-5px] duration-500;
 }
 
 .menus li a:hover::after {
     @apply w-full;
 }
 
-/* ! header menu */ 
+/* ! header menu */
 
 /* ! new arrival menu */
-.gblbtn{
-    @apply font-medium font-poppins text-[16px] text-[#FAFAFA] leading-6 py-4 px-12 bg-[#DB4444] rounded-[5px] 
+.gblbtn {
+    @apply font-medium font-poppins text-[16px] text-[#FAFAFA] leading-6 py-4 px-12 bg-[#DB4444] rounded-[5px]
 }
+
 /* ! new arrival menu */
 
-.fmenus a img:hover{
+.fmenus a img:hover {
     @apply text-[#DB4444]
 }
 
 
-.trash .icon:hover{
+.trash .icon:hover {
     @apply text-[#DB4444] duration-100
 }
+
+/* ! cart page */
+@theme {
+    --shadow-cart: 0px 1px 13px rgba(0, 0, 0, 0.05);
+}
+
+/* ! cart page */

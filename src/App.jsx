@@ -1,9 +1,8 @@
 import Banner from "./components/Banner/Banner"
 import BestSellingProduct from "./components/BestSellingProduct/BestSellingProduct"
 import BrowseCategory from "./components/BrowseCategory/BrowseCategory"
-import ExploreProduct from "./components/ExploreProduct/ExploreProduct"
-import Footer from "./components/Footer/Footer"
-import Navbar from "./components/Navbar/Navbar"
+import Cart from "./components/Cart/Cart"
+import ExploreProduct from "./components/ExploreProduct/ExploreProduct" 
 import NewArrival from "./components/NewArrival/NewArrival"
 
 function App() {
@@ -13,7 +12,7 @@ function App() {
       <NewArrival />
       <BrowseCategory />
       <BestSellingProduct />
-      <ExploreProduct /> 
+      <ExploreProduct />  
     </>
   )
 }
