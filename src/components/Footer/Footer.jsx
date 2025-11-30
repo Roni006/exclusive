@@ -8,7 +8,7 @@ import android from "../../assets/footerimg/android.png";
 import facebook from "../../assets/footer-icons/facebook.svg";
 import twitter from "../../assets/footer-icons/twitter.svg";
 import instagram from "../../assets/footer-icons/instagram.svg";
-import linkedin from "../../assets/footer-icons/linkedin.svg" 
+import linkedin from "../../assets/footer-icons/linkedin.svg"
 const Footer = () => {
     return (
         <footer className='bg-black'>
@@ -90,6 +90,9 @@ const Footer = () => {
                         </div>
                     </div>
                 </div>
+            </div>
+            <div className="bottom border-t-2 border-[rgba(255,255,255,0.4)] pt-4 pb-6">
+                <p className="text-[16px] font-poppins leading-6 text-[rgba(255,255,255,0.25)] text-center">&copy; Copyright Rimel 2022. All right reserved</p>
             </div>
         </footer>
     )

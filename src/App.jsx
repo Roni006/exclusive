@@ -8,14 +8,12 @@ import NewArrival from "./components/NewArrival/NewArrival"
 
 function App() {
   return (
-    <>
-      <Navbar />
+    <> 
       <Banner />
       <NewArrival />
       <BrowseCategory />
       <BestSellingProduct />
-      <ExploreProduct />
-      <Footer />
+      <ExploreProduct /> 
     </>
   )
 }

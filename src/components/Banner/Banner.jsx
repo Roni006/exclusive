@@ -16,7 +16,7 @@ const Banner = () => {
     };
     return (
         <>
-            <section className='border-t border-[rgba(0,0,0,0.25)]'>
+            <section >
                 <div className="container">
                     <div className="flex justify-center">
                         <div className='category w-[20%] flex flex-col gap-4 pt-10 border-r border-[rgba(0,0,0,0.25)]'>

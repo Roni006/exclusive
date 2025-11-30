@@ -4,13 +4,14 @@ import { LuSearch } from "react-icons/lu";
 import { IoMdHeartEmpty } from "react-icons/io";
 import { IoCartOutline } from "react-icons/io5";
 import { LuUser } from "react-icons/lu";
+import { Link } from "react-router";
 
 
 const Navbar = () => {
 
     return (
         <>
-            <nav >
+            <nav className='border-b border-[rgba(0,0,0,0.25)]'>
                 <div className='bg-[#000000]'>
                     <div className="container">
                         <div className="flex items-center py-3">
@@ -38,14 +39,14 @@ const Navbar = () => {
                     <div className="pt-10 pb-4 flex items-center">
                         <div className="w-[10%]">
                             <div className="logo">
-                                <a href="#">
+                                <Link to="/">
                                     <img src={logo} alt="logo" />
-                                </a>
+                                </Link>
                             </div>
                         </div>
                         <div className="w-[60%]">
                             <ul className="menus flex justify-center gap-10">
-                                <li><a href="#">Home</a></li>
+                                <li><Link to="/" >Home</Link></li>
                                 <li><a href="#">About</a></li>
                                 <li><a href="#">Contact</a></li>
                                 <li><a href="#">Sign Up</a></li>
@@ -53,14 +54,16 @@ const Navbar = () => {
                         </div>
                         <div className="w-[30%] flex items-center justify-end gap-6">
                             <div className="W-[243px] relative">
-                                <input className="outline-0 bg-[#F5F5F5] py-2.5 ps-4 pe-10 w-full text-[12px] leading-[18px rounded-sm font-poppins" type='text' placeholder="What are you looking for?" />
-                                <LuSearch className="absolute top-[50%] translate-y-[-50%] right-4 cursor-pointer" />
+                                <input className="outline-0 bg-[#F5F5F5] py-2.5 ps-4 pe-10 w-full text-[12px] leading-[18px rounded-sm font-poppins" type='text' placeholder="What are you looking for ?" />
+                                <LuSearch for="search" className="absolute top-[50%] translate-y-[-50%] right-4 cursor-pointer" />
 
                             </div>
                             <div className="flex justify-center items-center gap-4">
 
-                                <div className="w-8 h-8 hover:hover:bg-[#DB4444] duration-200 flex justify-center items-center rounded-full cursor-pointer group">
-                                    <IoMdHeartEmpty className="text-[18px] text-[#000000] group-hover:text-white duration-200 " />
+                                <div className="w-8 h-8 hover:hover:bg-[#DB4444] duration-200 flex justify-center items-center rounded-full  group">
+                                    <Link to="wishlist">
+                                        <IoMdHeartEmpty className="text-[18px] text-[#000000] group-hover:text-white duration-200 cursor-pointer " />
+                                    </Link>
                                 </div>
 
                                 <div className="w-8 h-8 hover:hover:bg-[#DB4444] flex justify-center items-center rounded-full cursor-pointer group">

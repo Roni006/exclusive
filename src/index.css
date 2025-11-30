@@ -43,3 +43,8 @@
 .fmenus a img:hover{
     @apply text-[#DB4444]
 }
+
+
+.trash .icon:hover{
+    @apply text-[#DB4444] duration-100
+}
