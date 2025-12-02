@@ -28,7 +28,7 @@
 }
 
 .menus li a::after {
-    @apply absolute w-0 content-[""] h-0.5 bg-[rgba(0, 0, 0, 0.25)] left-0 bottom-[-5px] duration-500;
+    @apply absolute w-0 content-[""] h-0.5 bg-[rgba(0,0,0,0.25)] left-0 bottom-[-5px] duration-500;
 }
 
 .menus li a:hover::after {

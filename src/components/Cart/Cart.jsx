@@ -12,9 +12,6 @@ const Cart = () => {
         button1: 1,
         button2: 1,
     })
-
-
-
     const handleIncrement = (button) => {
         setCounts((prevCounts) => ({
             ...prevCounts,
@@ -30,7 +27,7 @@ const Cart = () => {
         }
     }
     return (
-        <section className='pt-[181px] pb-28 '>
+        <section className='pt-40 pb-28 '>
             <div className="container">
                 <div className='ctitle pb-[50px]'>
                     <h1 className='text-[20px] font-poppins leading-6 text-[#000000]'>Cart</h1>
@@ -98,7 +95,36 @@ const Cart = () => {
                         <h2 className='text-[16px] text-[#000000] leading-6 font-poppins '>$<span>{price.price2 * counts.button2}</span> </h2>
                     </div>
                 </div>
-                
+                <div className="flex justify-between">
+                    <a href="#" className="text-[16px] leading-6 text-[#000000] font-poppins py-4 px-12 font-medium border rounded-sm hover:bg-[#DB4444] duration-300 hover:text-white hover:border-[#DB4444] ">Return To Shop</a>
+                    <a href="#" className="text-[16px] leading-6 text-[#000000] font-poppins py-4 px-12 font-medium border rounded-sm hover:bg-[#DB4444] duration-300 hover:text-white hover:border-[#DB4444] ">Update Cart</a>
+                </div>
+
+                <div className="flex justify-end pt-28">
+                    <div className="w-[470px] border-2 py-8 px-6 rounded-md ">
+                        <h2 className="text-[20px] leadgin6
+                     text-[rgba(0,0,0)] font-medium pb-6">Cart Total</h2>
+
+                        <div className="flex justify-between border-b-2 border-[rgba(0,0,0,0.5)] pb-4 ">
+                            <h3 className="text-[16px] leading-6 text-[#000000] font-poppins font-normal">Subtoal:</h3>
+                            <span className="text-[16px] leading-6 text-[#000000] font-poppins font-normal">$1750</span>
+                        </div>
+
+                        <div className="flex justify-between border-b-2 border-[rgba(0,0,0,0.5)] pb-4 pt-4">
+                            <h3 className="text-[16px] leading-6 text-[#000000] font-poppins font-normal">Shipping:</h3>
+                            <span className="text-[16px] leading-6 text-[#000000] font-poppins font-normal">$1750</span>
+                        </div>
+
+                        <div className="flex justify-between pb-4 pt-4">
+                            <h3 className="text-[16px] leading-6 text-[#000000] font-poppins font-normal">Total:</h3>
+                            <span className="text-[16px] leading-6 text-[#000000] font-poppins font-normal">$1750</span>
+                        </div>
+                        <div className="text-center pt-4">
+                            <a href="#" className="gblbtn">Procees to checkout</a>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </section>
     )
