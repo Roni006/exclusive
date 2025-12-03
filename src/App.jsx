@@ -12,15 +12,15 @@ import Registration from "./components/Registration/Registration"
 function App() {
   return (
     <>
-      {/* <Banner />
+      <Banner />
       <NewArrival />
       <BrowseCategory />
       <BestSellingProduct />
-      <ExploreProduct /> */}
+      <ExploreProduct />
       {/*  ! ================= */}
       {/* <Login/> */}
       {/* <Registration/> */}
-      <BIllingDetails/>
+      {/* <BIllingDetails/> */}
     </>
   )
 }

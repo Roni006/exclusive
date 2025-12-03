@@ -6,6 +6,8 @@ import { RouterProvider } from "react-router/dom";
 import WishList from './components/WishList/WishList.jsx';
 import MainRoot from './components/MainRoot/MainRoot.jsx'; 
 import Cart from './components/Cart/Cart.jsx';
+import BIllingDetails from './components/BIllingDetails/BIllingDetails.jsx';
+import NotFount from './components/NotFount/NotFount.jsx';
 const router = createBrowserRouter([
   {
     path: "/",
@@ -14,6 +16,8 @@ const router = createBrowserRouter([
       { index: true, Component: App },
       { path: "wishlist", Component: WishList },
       { path: "cart", Component: Cart },
+      { path: "checkout", Component: BIllingDetails },
+      { path: "*", Component: NotFount },
       
     ],
   },

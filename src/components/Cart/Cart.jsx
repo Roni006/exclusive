@@ -3,6 +3,7 @@ import console from "../../assets/cart/concole.png"
 import arrowUp from "../../assets/cart/arrowUp.svg";
 import arrowDown from "../../assets/cart/arrpwDown.svg"
 import { useState } from "react";
+import { Link } from "react-router";
 const Cart = () => {
     const [price, setPrice] = useState({
         price1: 650,
@@ -26,6 +27,9 @@ const Cart = () => {
             }))
         }
     }
+
+    const totalAmoutn = (price.price1*counts.button1) + (price.price2*counts.button2)
+
     return (
         <section className='pt-40 pb-28 '>
             <div className="container">
@@ -107,20 +111,21 @@ const Cart = () => {
 
                         <div className="flex justify-between border-b-2 border-[rgba(0,0,0,0.5)] pb-4 ">
                             <h3 className="text-[16px] leading-6 text-[#000000] font-poppins font-normal">Subtoal:</h3>
-                            <span className="text-[16px] leading-6 text-[#000000] font-poppins font-normal">$1750</span>
+                            <span className="text-[16px] leading-6 text-[#000000] font-poppins font-normal">${totalAmoutn}</span>
                         </div>
 
                         <div className="flex justify-between border-b-2 border-[rgba(0,0,0,0.5)] pb-4 pt-4">
                             <h3 className="text-[16px] leading-6 text-[#000000] font-poppins font-normal">Shipping:</h3>
-                            <span className="text-[16px] leading-6 text-[#000000] font-poppins font-normal">$1750</span>
+                            <span className="text-[16px] leading-6 text-[#000000] font-poppins font-normal">Free</span>
                         </div>
 
                         <div className="flex justify-between pb-4 pt-4">
                             <h3 className="text-[16px] leading-6 text-[#000000] font-poppins font-normal">Total:</h3>
-                            <span className="text-[16px] leading-6 text-[#000000] font-poppins font-normal">$1750</span>
+                            <span className="text-[16px] leading-6 text-[#000000] font-poppins font-normal">${totalAmoutn}</span>
                         </div>
+                        
                         <div className="text-center pt-4">
-                            <a href="#" className="gblbtn">Procees to checkout</a>
+                            <Link to='/checkout' className="gblbtn">Procees to checkout</Link>
                         </div>
                     </div>
                 </div>
