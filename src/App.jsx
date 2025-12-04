@@ -7,20 +7,23 @@ import ExploreProduct from "./components/ExploreProduct/ExploreProduct"
 import Login from "./components/Login/Login"
 import NewArrival from "./components/NewArrival/NewArrival"
 import NotFount from "./components/NotFount/NotFount"
+import ProductDetails from "./components/ProductDetails/ProductDetails"
 import Registration from "./components/Registration/Registration"
 
 function App() {
   return (
     <>
-      <Banner />
+      {/* <Banner />
       <NewArrival />
       <BrowseCategory />
       <BestSellingProduct />
-      <ExploreProduct />
+      <ExploreProduct /> */}
       {/*  ! ================= */}
       {/* <Login/> */}
       {/* <Registration/> */}
       {/* <BIllingDetails/> */}
+
+      <ProductDetails/>
     </>
   )
 }

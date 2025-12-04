@@ -26,7 +26,8 @@
 }
 
 .menus li a:hover,
-.fmenu a:hover {
+.fmenu a:hover,
+.user a:hover {
     @apply text-[#DB4444] duration-200;
 
 }
@@ -63,3 +64,9 @@
 }
 
 /* ! cart page */
+
+/* !usez */
+.user a{
+    @apply text-[16px] leading-6 text-[#000000] font-medium font-poppins
+}
+/* !usez */

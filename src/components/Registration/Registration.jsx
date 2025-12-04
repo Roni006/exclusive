@@ -1,5 +1,6 @@
 import loginImage from "../../assets/images/login.png"
 import google from "../../assets/images/goggle.png"
+import { Link } from "react-router"
 const Registration = () => {
     return (
         <>
@@ -7,10 +8,8 @@ const Registration = () => {
                 <div className="container">
                     <section>
                         <div className="container ">
-                            <div className="login-details flex gap-[130px] items-center pt-[100px] pb-[220px]">
-                                {/* <div className="w-[462px]"> */}
-                                <div className="w-[662px]">
-                                    {/* <img className="w-full"  src={loginImage} alt="login image" /> */}
+                            <div className="login-details flex gap-[130px] items-center pt-[100px] pb-[220px]"> 
+                                <div className="w-[662px]"> 
                                     <img src={loginImage} alt="login image" />
                                 </div>
                                 <div className="w-[371px]">
@@ -32,7 +31,7 @@ const Registration = () => {
                                         </div>
                                         <div className="flex items-center justify-center gap-4 mt-8 ">
                                             <span className="text-[16px] text-[#000000] leading-6 font-poppins font-normal ">Already have account?</span>
-                                            <a href="#" className="text-[16px] text-[#000000] leading-6 font-poppins font-bold ">Login</a>
+                                            <Link to='login' className="text-[16px] text-[#000000] leading-6 font-poppins font-bold ">Login</Link>
                                         </div>
                                     </form>
                                 </div>

@@ -9,6 +9,9 @@ import Cart from './components/Cart/Cart.jsx';
 import BIllingDetails from './components/BIllingDetails/BIllingDetails.jsx';
 import NotFount from './components/NotFount/NotFount.jsx';
 import Registration from './components/Registration/Registration.jsx';
+import Profile from './components/Profile/Profile.jsx'; 
+import Login from './components/Login/Login.jsx';
+import ProductDetails from './components/ProductDetails/ProductDetails.jsx';
 const router = createBrowserRouter([
   {
     path: "/",
@@ -19,6 +22,9 @@ const router = createBrowserRouter([
       { path: "cart", Component: Cart },
       { path: "checkout", Component: BIllingDetails },
       { path: "signup", Component: Registration },
+      { path: "login", Component: Login },
+      { path: "user", Component: Profile },
+      { path: "details", Component: ProductDetails },
       { path: "*", Component: NotFount },
       
     ],

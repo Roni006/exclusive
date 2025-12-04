@@ -5,9 +5,7 @@ const Login = () => {
             <section>
                 <div className="container ">
                     <div className="login-details flex gap-[130px] items-center pt-[100px] pb-[220px]">
-                        {/* <div className="w-[462px]"> */}
                         <div className="w-[662px]">
-                            {/* <img className="w-full"  src={loginImage} alt="login image" /> */}
                             <img src={loginImage} alt="login image" />
                         </div>
                         <div className="w-[371px]">

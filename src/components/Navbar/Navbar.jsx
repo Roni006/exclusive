@@ -72,7 +72,9 @@ const Navbar = () => {
                                 </div>
 
                                 <div className="w-8 h-8 hover:hover:bg-[#DB4444] flex justify-center items-center rounded-full cursor-pointer group">
-                                    <LuUser className="text-[18px] text-[#000000] group-hover:text-white duration-200 " />
+                                    <Link to="user">
+                                        <LuUser className="text-[18px] text-[#000000] group-hover:text-white duration-200 " />
+                                    </Link>
                                 </div>
 
                             </div>
