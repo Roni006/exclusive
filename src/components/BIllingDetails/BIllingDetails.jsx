@@ -75,17 +75,67 @@ const BIllingDetails = () => {
 
                                 <div>
                                     <div className="flex items-center gap-4 ">
-                                        <input className="cursor-pointer border" type="radio" id='stripe' name="dot" />
-                                        <label className="cursor-pointer" htmlFor="stripe">Stripe</label>
+                                        {/* <input className="cursor-pointer border" type="radio" id='stripe' name="dot" />
+                                        <label className="cursor-pointer" htmlFor="stripe">Stripe</label> */}
+                                        <input
+                                            id="radio"
+                                            type="radio"
+                                            name="value1"
+                                            className="w-5 h-5 hidden peer"
+                                            defaultChecked=""
+                                        />
+                                        <label
+                                            htmlFor="radio"
+                                            className="relative flex items-center justify-center p-1 peer-checked:before:hidden before:block before:absolute before:w-full before:h-full before:bg-white w-6 h-6 cursor-pointer border-2 border-black rounded-full overflow-hidden"
+                                        >
+                                            <span className="bg-black rounded-full w-3 h-3" />
+                                        </label>
+                                        <label htmlFor="radio">Stripe</label>
+
+
                                     </div>
                                     <div className="flex items-center gap-4 ">
-                                        <input className="cursor-pointer border" type="radio" id='cash' name="dot"/>
-                                        <label className="cursor-pointer" htmlFor="cash">Cash on Delivery</label>
+                                          <input
+                                            id="cash"
+                                            type="radio"
+                                            name="value1"
+                                            className="w-5 h-5 hidden peer"
+                                            defaultChecked=""
+                                        />
+                                        <label
+                                            htmlFor="cash"
+                                            className="relative flex items-center justify-center p-1 peer-checked:before:hidden before:block before:absolute before:w-full before:h-full before:bg-white w-6 h-6 cursor-pointer border-2 border-black rounded-full overflow-hidden"
+                                        >
+                                            <span className="bg-black rounded-full w-3 h-3" />
+                                        </label>
+                                        <label htmlFor="cash">Stripe</label>
                                     </div>
                                 </div>
+
+                                {/* <div className="space-x-6 flex">
+                                    <div className="flex items-center">
+                                        <input
+                                            id="radio"
+                                            type="radio"
+                                            name="value1"
+                                            className="w-5 h-5 hidden peer"
+                                            defaultChecked=""
+                                        />
+                                        <label
+                                            htmlFor="radio"
+                                            className="relative flex items-center justify-center p-1 peer-checked:before:hidden before:block before:absolute before:w-full before:h-full before:bg-white w-6 h-6 cursor-pointer border-2 border-black rounded-full overflow-hidden"
+                                        >
+                                            <span className="bg-black rounded-full w-3 h-3" />
+                                        </label>
+                                    </div>
+                                </div> */}
+
+
+
+
                             </div>
                             <div className="flex justify-between items-center mt-8">
-                                <input className="w-[60%] py-4 px-6 border border-[rgba(0,0,0,0.4)] rounded-sm outline-0 text-[16px] font-poppins font-normal leading-6 " type="text" placeholder="Coupon Code"/>
+                                <input className="w-[60%] py-4 px-6 border border-[rgba(0,0,0,0.4)] rounded-sm outline-0 text-[16px] font-poppins font-normal leading-6 " type="text" placeholder="Coupon Code" />
                                 <button className="gblbtn cursor-pointer">Apply Coupon</button>
                             </div>
                             <div className="mt-8">

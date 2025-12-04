@@ -49,8 +49,7 @@ const Navbar = () => {
                                 <li><Link to="/" >Home</Link></li>
                                 <li><a href="#">About</a></li>
                                 <li><a href="#">Contact</a></li>
-                                <li><a href="#">Sign Up</a></li>
-                            </ul>
+                                <li><Link to='signup' >Sign Up</Link></li>                        </ul>
                         </div>
                         <div className="w-[30%] flex items-center justify-end gap-6">
                             <div className="W-[243px] relative">
