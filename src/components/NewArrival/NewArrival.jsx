@@ -3,8 +3,7 @@ import keyboard from "../../assets/images/product/keyboard.png"
 import chair from "../../assets/images/product/chair.png"
 import monitor from "../../assets/images/product/monitor.png"
 import { FaStar } from "react-icons/fa";
-import { TiStarHalfOutline } from "react-icons/ti";
-
+import { TiStarHalfOutline } from "react-icons/ti"; 
 import { TiStarFullOutline } from "react-icons/ti";
 
 const NewArrival = () => {
@@ -15,7 +14,6 @@ const NewArrival = () => {
                     <h1 className='text-[#000000] text-[36px] font-inter font-semibold leading-12 tracking-[20%]'>New Arrivals</h1>
                 </div>
                 <div className="grid grid-cols-4 gap-[30px] items-center justify-between">
-
                     <div className="product-item">
                         <div className="bg-[#F5F5F5] py-[35px] px-10 rounded-sm relative">
                             <img src={gamigConsole} alt="" />

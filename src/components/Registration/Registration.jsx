@@ -31,7 +31,7 @@ const Registration = () => {
                                         </div>
                                         <div className="flex items-center justify-center gap-4 mt-8 ">
                                             <span className="text-[16px] text-[#000000] leading-6 font-poppins font-normal ">Already have account?</span>
-                                            <Link to='login' className="text-[16px] text-[#000000] leading-6 font-poppins font-bold ">Login</Link>
+                                            <Link to='/login' className="text-[16px] text-[#000000] leading-6 font-poppins font-bold ">Login</Link>
                                         </div>
                                     </form>
                                 </div>

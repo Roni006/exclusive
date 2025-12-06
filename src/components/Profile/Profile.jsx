@@ -2,8 +2,11 @@
 const Profile = () => {
     return (
         <>
-            <section className="pt-[180px] pb-[140px] ">
+            <section className="pt-20 pb-[140px] ">
                 <div className="container">
+                    <div className="flex justify-end mb-20">
+                        <h4 className="text-[14px] leading-[21px] font-poppins font-medium cursor-pointer">Welcome! <span className="text-[#DB4444]">Md Rimel</span></h4>
+                    </div>
                     <div className="flex justify-between gap-[205px]">
                         <div className="user flex flex-col gap-3 w-[95px]">
                             <a href="#" className="">My Account</a>
