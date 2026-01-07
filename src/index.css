@@ -1,9 +1,9 @@
 @import "tailwindcss";
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
-* {
+/* * {
     user-select: none
-}
+} */
 
 /* ! Initial set up */
 .container {
@@ -14,6 +14,11 @@
     --font-poppins: "Poppins", sans-serif;
     --font-inter: "Inter", sans-serif;
     --shadow-cart: 0px 1px 13px rgba(0, 0, 0, 0.05);
+}
+
+.bgcolor { 
+  background: rgba(0,0,0,0.25);
+
 }
 
 /* ! Initial set up */
@@ -29,11 +34,10 @@
 .fmenu a:hover,
 .user a:hover {
     @apply text-[#DB4444] duration-200;
-
 }
 
 .menus li a::after {
-    @apply absolute w-0 content-[""] h-0.5 bg-[rgba(0, 0, 0, 0.25)] left-0 bottom-[-5px] duration-500;
+    @apply absolute w-0 content-[""] h-0.5 bgcolor text-[#000000] left-0 bottom-[-5px] duration-500;
 }
 
 .menus li a:hover::after {
@@ -43,7 +47,7 @@
 /* ! header menu */
 
 /* ! new arrival menu */
-.gblbtn {
+.gblbdtn {
     @apply font-medium font-poppins text-[16px] text-[#FAFAFA] leading-6 py-4 px-12 bg-[#DB4444] rounded-[5px] cursor-pointer
 }
 
@@ -73,12 +77,19 @@
 /* !usez */
 
 
-/* !product details color */ 
+/* !product details color */
 
-.color input[type="radio"]:checked + label span{ 
+.color input[type="radio"]:checked+label span {
     box-shadow: 0px 0px 0px 2px white inset;
     border: 2px solid #000;
 }
+
+.size input[type="radio"]:checked+label span {
+    background-color: #DB4444;
+    border: 1px solid #DB4444;
+    color: #fff;
+}
+
 /* !product details color */
 
- /* @apply shadow-md bg-white inset border-2 border-[#000] */
+/* @apply shadow-md bg-white inset border-2 border-[#000] */

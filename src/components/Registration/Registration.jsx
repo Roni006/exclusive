@@ -23,7 +23,7 @@ const Registration = () => {
 
                                         <input className="w-full border-b-2 border-[rgba(0,0,0,0.46)] pb-2 outline-0 pe-2 pt-12 font-poppins" type="password" placeholder="Password" />
                                         <div className="flex items-center justify-between">
-                                            <button type="submit" className="gblbtn mt-10 cursor-pointer w-full">Login</button>
+                                            <button type="submit" className="bg-[#DB4444] text-[16px] text-white px-[48px] py-[16px] rounded-sm mt-10 cursor-pointer w-full">Create Account</button>
                                         </div>
                                         <div className="flex items-center justify-center gap-4 py-4 px-[86px] border-2 border-[rgba(0,0,0,0.4)] rounded-md mt-4 ">
                                             <img src={google} alt="goggle image" />

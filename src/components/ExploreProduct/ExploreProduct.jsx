@@ -243,7 +243,7 @@ const ExploreProduct = () => {
                     </div> 
 
                     <div className="text-center pt-[60px] pb-[75px]">
-                        <a href="#" className="gblbtn">
+                        <a href="#" className="bg-[#DB4444] text-white font-poppins text-[18px] py-[16px] px-[48px] rounded-sm font-medium ">
                             View All Products
                         </a>
                     </div>

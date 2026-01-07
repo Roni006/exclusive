@@ -17,7 +17,7 @@ const Login = () => {
 
                                 <input className="w-full border-b-2 border-[rgba(0,0,0,0.46)] pb-2 outline-0 pe-2 pt-12 font-poppins" type="password" placeholder="Password" />
                                 <div className="flex items-center justify-between">
-                                    <button type="submit" className="gblbtn mt-10 cursor-pointer">Login</button>
+                                    <button type="submit" className="bg-[#DB4444] text-[16px] text-white px-[48px] py-[16px] rounded-sm mt-10 cursor-pointer">Login</button>
                                     <a href="#" className="text-[#db4444] leading-6 text-[16px] font-poppins font-normal ">Forget Password?</a>
                                 </div>
                             </form>
