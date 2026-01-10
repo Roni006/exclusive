@@ -90,10 +90,10 @@ const BIllingDetails = () => {
                             </div>
                             <div className="flex justify-between items-center mt-8">
                                 <input className="w-[60%] py-4 px-6 border border-[rgba(0,0,0,0.4)] rounded-sm outline-0 text-[16px] font-poppins font-normal leading-6 " type="text" placeholder="Coupon Code" />
-                                <button className="gblbtn cursor-pointer">Apply Coupon</button>
+                                <button className="gblbdtn cursor-pointer ">Apply Coupon</button>
                             </div>
                             <div className="mt-8">
-                                <button className="gblbtn">Place Order</button>
+                                <button className="gblbdtn">Place Order</button>
                             </div>
                         </div>
                     </div>

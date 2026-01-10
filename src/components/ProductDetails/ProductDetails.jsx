@@ -294,11 +294,15 @@ const ProductDetails = () => {
             <div className="product-item">
               <div className=" bg-[#F5F5F5] py-[35px] px-10 rounded-sm relative">
                 <img src={related.image} alt="" />
-                <div className="discount bg-[#DB4444] w-[55px] h-[26px] text-center rounded-sm absolute top-3 left-3">
-                  <span className="text-[12px] text-[#FAFAFA] ">
-                    -{related.discount}%
-                  </span>
-                </div>
+                {related.discount ? (
+                  <div className="discount bg-[#DB4444] w-[55px] h-[26px] text-center rounded-sm absolute top-3 left-3">
+                    <span className="text-[12px] text-[#FAFAFA] ">
+                      -{related.discount}%
+                    </span>
+                  </div>
+                ) : (
+                  ""
+                )}
               </div>
               <div className="details pt-4">
                 <h2 className="text-[18px] leading-6 font-poppins text-[#000000] font-medium">

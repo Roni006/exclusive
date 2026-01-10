@@ -51,9 +51,9 @@ const Profile = () => {
 
                                     <input className="py-3 px-4 bg-[#F5F5F5] outline-0 rounded-md w-full " type="password" placeholder="Confirm New Password" />
                                 </div>
-                                <div className="btn flex items-center gap-8 justify-end mt-6">
-                                    <button className="text-[16px] leading-6 text-[#000000] font-poppins font-normal ">Cancel</button>
-                                    <button className="gblbtn">Save Changes </button>
+                                <div className="btn flex items-center gap-8 justify-stat mt-6">
+                                    <button className="text-[16px] leading-6 text-[#000000] font-poppins font-normal gblbdtn">Cancel</button>
+                                    <button className="gblbdtn">Save Changes </button>
                                 </div>
                             </form>
                         </div>
