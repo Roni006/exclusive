@@ -1,18 +1,20 @@
 import { TiStarFullOutline } from "react-icons/ti";
 import { TiStarHalfOutline } from "react-icons/ti";
 import { FaStar } from "react-icons/fa";
-import dogFood from "../../assets/exploreproduct/dogfood.png";
-import camera from "../../assets/exploreproduct/camera.png";
-import laptop from "../../assets/exploreproduct/laptop.png";
-import curology from "../../assets/exploreproduct/curology.png";
-import car from "../../assets/exploreproduct/car.png";
-import shoe from "../../assets/exploreproduct/sportsshoe.png";
-import consoles from "../../assets/exploreproduct/console.png";
-import jacket from "../../assets/exploreproduct/jacket.png";
+// import dogFood from "../../assets/exploreproduct/dogfood.png";
+// import camera from "../../assets/exploreproduct/camera.png";
+// import laptop from "../../assets/exploreproduct/laptop.png";
+// import curology from "../../assets/exploreproduct/curology.png";
+// import car from "../../assets/exploreproduct/car.png";
+// import shoe from "../../assets/exploreproduct/sportsshoe.png";
+// import consoles from "../../assets/exploreproduct/console.png";
+// import jacket from "../../assets/exploreproduct/jacket.png";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { Link } from "react-router";
 
 const ExploreProduct = () => {
+  const [visible, setVisible] = useState(8);
   const [product, setProducts] = useState([]);
   useEffect(() => {
     axios
@@ -30,20 +32,24 @@ const ExploreProduct = () => {
           </div>
 
           <div className="grid grid-cols-4 gap-x-[30px] gap-y-[60px] items-center justify-between mb-[60px]">
-            {product.slice(16, 24).map((product) => (
+            {product.slice(0, visible).map((product) => (
               <div className="product-item">
                 <div className="bg-[#F5F5F5] py-[35px] px-10 rounded-sm relative">
-                  <img className="mx-auto" src={product.images} alt="" />
+                  <Link to={`/details/${product.id}`}>
+                    <img className="mx-auto" src={product.images} alt="" />
+                  </Link>
                 </div>
                 <div className="details pt-4">
                   <h2 className="text-[18px] leading-6 font-poppins text-[#000000] font-medium">
-                    {product.title}
+                    <Link to={`/details/${product.id}`}>{product.title}</Link>
                   </h2>
 
                   <div className="raring flex gap-2 items-center">
                     <div className="price">
                       <p className="text-[16px] leading-6 font-poppins font-semibold flex gap-3 py-2">
-                        <span className=" text-[#DB4444]">${product.price}</span>
+                        <span className=" text-[#DB4444]">
+                          ${product.price}
+                        </span>
                       </p>
                     </div>
                     <div className="star flex gap-1 items-center">
@@ -65,12 +71,15 @@ const ExploreProduct = () => {
           </div>
 
           <div className="text-center pt-[60px] pb-[75px]">
-            <a
-              href="#"
-              className="bg-[#DB4444] text-white font-poppins text-[18px] py-[16px] px-[48px] rounded-sm font-medium "
-            >
-              View All Products
-            </a>
+            {visible < product.length && (
+              <a
+                onClick={() => setVisible(visible + 4)}
+                href="#"
+                className="bg-[#DB4444] text-white font-poppins text-[18px] py-4 px-12 rounded-sm font-medium "
+              >
+                View More Products
+              </a>
+            )}
           </div>
         </div>
       </section>
