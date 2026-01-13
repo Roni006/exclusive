@@ -112,7 +112,7 @@ const NewArrival = () => {
                     </div>
                 </div>
                 <div className="text-center py-[102px]">
-                    <a href="#" className="gblbtn">
+                    <a href="#" className="gblbdtn">
                         View All Products
                     </a>
                 </div>

@@ -20,7 +20,7 @@ const Banner = () => {
   const [categories, setCategories] = useState([]);
   useEffect(() => {
     axios
-      .get("https://dummyjson.com/products/category-list")
+      .get("https://dummyjson.com/products/categories")
       .then((result) => setCategories(result.data));
   }, []);
   return (
@@ -30,7 +30,10 @@ const Banner = () => {
           <div className="flex justify-center">
             <div className="category w-[20%] flex flex-col gap-4 pt-10 border-r border-[rgba(0,0,0,0.25)]">
               {categories.slice(0, 9).map((category) => (
-                <Link href="#" className="capitalize">{category}</Link>
+                // <Link to="">
+                //   <p className="capitalize">{category.name}</p>
+                // </Link>
+                <Link to={`/category/product/${category.slug}`}>{category.name}</Link>
               ))}
             </div>
             <div className="w-[80%] mt-10 ps-[45px]">
@@ -133,7 +136,7 @@ const Banner = () => {
               </Slider>
             </div>
           </div>
-        </div>
+        </div> 
       </section>
     </>
   );

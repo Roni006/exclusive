@@ -83,7 +83,7 @@ const ProductDetails = () => {
       setPreviewImg(details.data.thumbnail);
       setGallery(details.data.images);
     });
-  },[]);
+  }, []);
   return (
     <section className="pt-[110px] pb-15">
       <div className="container">
@@ -101,8 +101,8 @@ const ProductDetails = () => {
                   </div>
                 ))}
               </div>
-              <div className="bg-[#f5f5f5] flex items-center py-3 px-6 rounded-sm">
-                <img src={previewImg} alt="" />
+              <div className="bg-[#f5f5f5] w-[70%] flex items-center py-3 px-6 rounded-sm">
+                <img className="w-full" src={previewImg} alt="" />
               </div>
             </div>
 

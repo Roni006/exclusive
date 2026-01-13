@@ -12,6 +12,7 @@ import Registration from './components/Registration/Registration.jsx';
 import Profile from './components/Profile/Profile.jsx'; 
 import Login from './components/Login/Login.jsx';
 import ProductDetails from './components/ProductDetails/ProductDetails.jsx';
+import CategoreyProduct from './components/CategoreyProduct/CategoreyProduct.jsx';
 const router = createBrowserRouter([
   {
     path: "/",
@@ -25,6 +26,7 @@ const router = createBrowserRouter([
       { path: "details/:id", Component: ProductDetails },
       { path: "user", Component: Profile },
       { path: "login", Component: Login },
+      { path: "category/product/:slug", Component: CategoreyProduct },
       { path: "*", Component: NotFount },
       
     ],
