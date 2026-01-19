@@ -13,6 +13,7 @@ import Profile from './components/Profile/Profile.jsx';
 import Login from './components/Login/Login.jsx';
 import ProductDetails from './components/ProductDetails/ProductDetails.jsx';
 import CategoreyProduct from './components/CategoreyProduct/CategoreyProduct.jsx';
+import firebaseConfig from "./firebaseConfig .js"
 const router = createBrowserRouter([
   {
     path: "/",
