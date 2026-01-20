@@ -1,6 +1,6 @@
 import loginImage from "../../assets/images/login.png";
 import google from "../../assets/images/goggle.png";
-import { Link, Navigate } from "react-router";
+import { Link, Navigate, useNavigate } from "react-router";
 import { useState } from "react";
 import { FaEyeSlash, FaEye } from "react-icons/fa6";
 import { Bounce, ToastContainer, toast } from "react-toastify";
@@ -12,6 +12,7 @@ import {
 } from "firebase/auth";
 
 const Registration = () => {
+  const nagivate = useNavigate();
   const auth = getAuth();
   const [showpass, setShowPass] = useState(false);
   const [showconpass, setShowConPass] = useState(false);
@@ -58,6 +59,7 @@ const Registration = () => {
           updateProfile(auth.currentUser, {
             displayName: formdata.name,
           });
+          nagivate("/login")
           console.log(userCredential);
         })
         .then(() => {

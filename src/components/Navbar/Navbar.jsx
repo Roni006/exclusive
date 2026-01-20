@@ -5,12 +5,33 @@ import { IoMdHeartEmpty } from "react-icons/io";
 import { IoCartOutline } from "react-icons/io5";
 import { LuUser } from "react-icons/lu";
 import { Link, useLocation } from "react-router";
+import { getAuth, onAuthStateChanged } from "firebase/auth";
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { authinfo } from "../../Redux/Slice/authSlice";
 
 const Navbar = () => {
   const location = useLocation();
   const currentLocation = location.pathname;
   console.log(location.pathname);
-  
+
+  const auth = getAuth();
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    const unsub = onAuthStateChanged(auth, (user) => {
+      if (user) {
+        dispatch(
+          authinfo({
+            uid: user.uid,
+            email: user.email,
+            displayName: user.displayName,
+          }),
+        );
+      }
+    });
+    return () => unsub();
+  }, []);
 
   return (
     <>
