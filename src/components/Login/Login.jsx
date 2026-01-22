@@ -43,28 +43,56 @@ const Login = () => {
       signInWithEmailAndPassword(auth, formData.email, formData.password)
         .then((userCredential) => {
           const user = userCredential.user;
-          dispatch(authinfo({
-            uid:user.uid,
-            email: user.email,
-            displayName: user.displayName,
-          }));
-          navigate("/");
+          dispatch(
+            authinfo({
+              uid: user.uid,
+              email: user.email,
+              displayName: user.displayName,
+            }),
+          );
+          if(navigate("/")){
+
+          toast.success("Successfully Logged in", {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: false,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "colored",
+            transition: Bounce,
+          });
+          }
+
         })
         .catch((error) => {
           console.log(error);
+
+          toast.error("Invalid Credential", {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: false,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "colored",
+            transition: Bounce,
+          });
         });
       //! firebase
-      toast.success("Successfully Logged in", {
-        position: "top-right",
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: false,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "colored",
-        transition: Bounce,
-      });
+      // toast.success("Successfully Logged in", {
+      //   position: "top-right",
+      //   autoClose: 5000,
+      //   hideProgressBar: false,
+      //   closeOnClick: false,
+      //   pauseOnHover: true,
+      //   draggable: true,
+      //   progress: undefined,
+      //   theme: "colored",
+      //   transition: Bounce,
+      // });
     }
   };
   return (
