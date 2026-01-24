@@ -17,9 +17,13 @@ import { GoPlus } from "react-icons/go";
 import { TiStarFullOutline } from "react-icons/ti";
 import { Link, useParams } from "react-router";
 import axios from "axios";
+import { useDispatch } from "react-redux";
+import { addToCart } from "../../Redux/Slice/cartSlice";
+import { Bounce, toast, ToastContainer } from "react-toastify";
 const ProductDetails = () => {
+  const dispatch = useDispatch();
   const { id } = useParams();
-  const [qunatity, setQuantity] = useState(1);
+  const [quantity, setQuantity] = useState(1);
   const sizes = [
     { id: 1, name: "XS" },
     { id: 2, name: "S" },
@@ -84,253 +88,274 @@ const ProductDetails = () => {
       setGallery(details.data.images);
     });
   }, []);
+
+  const handleAddToCart = () => {
+    dispatch(
+      addToCart({
+        id: proDetails.id,
+        title: proDetails.title,
+        price: proDetails.price,
+        image: proDetails.thumbnail,
+        quantity,
+      }),
+    );
+    if (addToCart) {
+      toast.success("Product added to cart", {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: false,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+        transition: Bounce,
+      });
+    }
+  };
   return (
-    <section className="pt-[110px] pb-15">
-      <div className="container">
-        <div className="flex gap-[70px] ">
-          {/* left part */}
-          <div className="w-[60%]">
-            <div className="flex gap-[30px]">
-              <div className="w-[30%] flex flex-col gap-4 items-center">
-                {gallery.map((gallery) => (
-                  <div
-                    onClick={() => setPreviewImg(gallery.thumbnail)}
-                    className="bg-[#f5f5f5] py-3 px-6 rounded-sm cursor-pointer"
-                  >
-                    <img src={gallery} alt="gallery thumb" />
-                  </div>
-                ))}
+    <>
+      <ToastContainer />
+      <section className="pt-[110px] pb-15">
+        <div className="container">
+          <div className="flex gap-[70px] ">
+            {/* left part */}
+            <div className="w-[60%]">
+              <div className="flex gap-[30px]">
+                <div className="w-[30%] flex flex-col gap-4 items-center">
+                  {gallery.map((gallery) => (
+                    <div
+                      onClick={() => setPreviewImg(gallery.thumbnail)}
+                      className="bg-[#f5f5f5] py-3 px-6 rounded-sm cursor-pointer"
+                    >
+                      <img src={gallery} alt="gallery thumb" />
+                    </div>
+                  ))}
+                </div>
+                <div className="bg-[#f5f5f5] w-[70%] flex items-center py-3 px-6 rounded-sm">
+                  <img className="w-full" src={previewImg} alt="" />
+                </div>
               </div>
-              <div className="bg-[#f5f5f5] w-[70%] flex items-center py-3 px-6 rounded-sm">
-                <img className="w-full" src={previewImg} alt="" />
+
+              <div className="mt-[92px]">
+                <div className="item1">
+                  <h2 className="text-[36px] leading-10 font-poppins font-bold text-[#111827] ">
+                    {/* Havic HV G-92 Gamepad */}
+                    {proDetails?.title}
+                  </h2>
+                  <p className="text-[16px] leading-6 font-poppins text-[#4B5563] font-normal mt-4 w-[725px]">
+                    {proDetails.description}
+                  </p>
+                </div>
+
+                <div className="item1 mt-6">
+                  <h2 className="text-[24px] leading-8 font-poppins font-bold text-[#111827] ">
+                    {proDetails?.title}
+                  </h2>
+                  <p className="text-[16px] leading-6 font-poppins text-[#4B5563] font-normal mt-4 w-[725px]">
+                    {proDetails?.description}
+                  </p>
+                </div>
+
+                <div className="item1 mt-6">
+                  <h2 className="text-[24px] leading-8 font-poppins font-bold text-[#111827] ">
+                    Keywords
+                  </h2>
+                  <div className="flex items-center gap-2">
+                    {tags.map((tag) => (
+                      <div className="mt-2 cursor-pointer border-2 border-[#E5E7EB]  py-2 px-3.5 flex gap-2 rounded-3xl">
+                        <img src={star} alt="star" />
+                        <p className="text-3 text-[#4b5563] leading-4 font-poppins font-normal">
+                          {tag}
+                        </p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
               </div>
             </div>
+            {/* right part */}
+            <div className="w-[40%]">
+              <h2 className="text-[24px] font-inter font-semibold text-[#000000] leading-6 tracking-[3%] mb-4">
+                {proDetails?.title}
+              </h2>
 
-            <div className="mt-[92px]">
-              <div className="item1">
-                <h2 className="text-[36px] leading-10 font-poppins font-bold text-[#111827] ">
-                  Havic HV G-92 Gamepad
-                  {/* {proDetails.data.title} */}
-                </h2>
-                <p className="text-[16px] leading-6 font-poppins text-[#4B5563] font-normal mt-4 w-[725px]">
-                  The St. Louis Meramec Canoe Company was founded by Alfred
-                  Wickett in 1922. Wickett had previously worked for the Old
-                  Town Canoe Co from 1900 to 1914. Manufacturing of the classic
-                  wooden canoes in Valley Park, Missouri ceased in 1978.
-                  {/* {proDetails.data.description} */}
-                </p>
+              <div className="flex items-center">
+                {Array.from({ length: 5 }).map((_, i) => (
+                  <TiStarFullOutline
+                    key={i}
+                    className={
+                      i < rating
+                        ? "text-[#FFAD33] text-[20px] "
+                        : "text-gray-300 text-[20px]"
+                    }
+                  />
+                ))}
+                <span className="ml-2 text-[rgba(16,3,3,0.5)] font-poppins font-normal leading-3.5 ">
+                  (150 Reviews)
+                </span>
               </div>
+              <h3 className="font-inter font-normal leading-6 text-[#000000] tracking-[%3] text-[24px] pt-4 pb-6">
+                {" "}
+                {/* $192.00 */}
+                {/* $ {proDetails.data.price} */}$ {proDetails.price}
+              </h3>
+              <p
+                className="font-poppins font-normal text-[#000000] leading-[21px] text-[14px] w-[373px] border-b-2 border-[rgba(0,0,0,0.5)] pb-6
+                        "
+              >
+                {/* {proDetails.data.description} */}
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur
+                soluta blanditiis aliquam possimus, molestiae repellendus
+                quisquam, illo quis sint ullam tempora quia
+              </p>
 
-              <div className="item1 mt-6">
-                <h2 className="text-[24px] leading-8 font-poppins font-bold text-[#111827] ">
-                  Havic HV G-92 Gamepad
-                </h2>
-                <p className="text-[16px] leading-6 font-poppins text-[#4B5563] font-normal mt-4 w-[725px]">
-                  The St. Louis Meramec Canoe Company was founded by Alfred
-                  Wickett in 1922. Wickett had previously worked for the Old
-                  Town Canoe Co from 1900 to 1914. Manufacturing of the classic
-                  wooden canoes in Valley Park, Missouri ceased in 1978.
-                </p>
-              </div>
-
-              <div className="item1 mt-6">
-                <h2 className="text-[24px] leading-8 font-poppins font-bold text-[#111827] ">
-                  Keywords
-                </h2>
+              <div className="color pt-6 flex gap-6">
+                <div>
+                  <p className=" items-center  text-[20px] leading-5 text-[#000000] tracking-[3%] font-poppins">
+                    Colors:{" "}
+                  </p>
+                </div>
                 <div className="flex items-center gap-2">
-                  {tags.map((tag) => (
-                    <div className="mt-2 cursor-pointer border-2 border-[#E5E7EB]  py-2 px-3.5 flex gap-2 rounded-3xl">
-                      <img src={star} alt="star" />
-                      <p className="text-3 text-[#4b5563] leading-4 font-poppins font-normal">
-                        {tag}
-                      </p>
+                  {colors.map((color) => (
+                    <div>
+                      <input
+                        type="radio"
+                        name="radio"
+                        id={`color${color.id}`}
+                        className="hidden color"
+                      />
+                      <label
+                        htmlFor={`color${color.id}`}
+                        className=" cursor-pointer "
+                      >
+                        <span
+                          style={{ backgroundColor: color.bgcolor }}
+                          className="w-5 h-5 inline-block rounded-full "
+                        ></span>
+                      </label>
                     </div>
                   ))}
                 </div>
               </div>
-            </div>
-          </div>
-          {/* right part */}
-          <div className="w-[40%]">
-            <h2 className="text-[24px] font-inter font-semibold text-[#000000] leading-6 tracking-[3%] mb-4">
-              {/* {proDatails.data.title}  */}
-              {/* {proDetails.title} */}
-              title
-            </h2>
 
-            <div className="flex items-center">
-              {Array.from({ length: 5 }).map((_, i) => (
-                <TiStarFullOutline
-                  key={i}
-                  className={
-                    i < rating
-                      ? "text-[#FFAD33] text-[20px] "
-                      : "text-gray-300 text-[20px]"
-                  }
-                />
-              ))}
-              <span className="ml-2 text-[rgba(16,3,3,0.5)] font-poppins font-normal leading-3.5 ">
-                (150 Reviews)
-              </span>
-            </div>
-            <h3 className="font-inter font-normal leading-6 text-[#000000] tracking-[%3] text-[24px] pt-4 pb-6">
-              {" "}
-              {/* $192.00 */}
-              {/* $ {proDetails.data.price} */}$ {proDetails.price}
-            </h3>
-            <p
-              className="font-poppins font-normal text-[#000000] leading-[21px] text-[14px] w-[373px] border-b-2 border-[rgba(0,0,0,0.5)] pb-6
-                        "
-            >
-              {/* {proDetails.data.description} */}
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur
-              soluta blanditiis aliquam possimus, molestiae repellendus
-              quisquam, illo quis sint ullam tempora quia
-            </p>
-
-            <div className="color pt-6 flex gap-6">
-              <div>
-                <p className=" items-center  text-[20px] leading-5 text-[#000000] tracking-[3%] font-poppins">
-                  Colors:{" "}
-                </p>
+              <div className="size pt-6 flex gap-6 items-center">
+                <div>
+                  <p className=" items-center  text-[20px] leading-5 text-[#000000] tracking-[3%] font-poppins">
+                    Size:{" "}
+                  </p>
+                </div>
+                <div className="flex items-center gap-2">
+                  {sizes.map((size) => (
+                    <div>
+                      <input
+                        type="radio"
+                        name="radio"
+                        id={`size${size.id}`}
+                        className="hidden size"
+                      />
+                      <label
+                        htmlFor={`size${size.id}`}
+                        className=" cursor-pointer "
+                      >
+                        <span className="font-poppins text-[14px] text-[#000] font-medium w-8 h-8 inline-block rounded-sm border-2 border-[#808080] text-center leading-[30px]">
+                          {size.name}
+                        </span>
+                      </label>
+                    </div>
+                  ))}
+                </div>
               </div>
-              <div className="flex items-center gap-2">
-                {colors.map((color) => (
-                  <div>
-                    <input
-                      type="radio"
-                      name="radio"
-                      id={`color${color.id}`}
-                      className="hidden color"
-                    />
-                    <label
-                      htmlFor={`color${color.id}`}
-                      className=" cursor-pointer "
-                    >
-                      <span
-                        style={{ backgroundColor: color.bgcolor }}
-                        className="w-5 h-5 inline-block rounded-full "
-                      ></span>
-                    </label>
+              {/* increment decrement functionality */}
+              <div className="quantity flex pt-6 items-center gap-4">
+                <div className="w-[32%] h-11 flex items-center">
+                  <div
+                    onClick={() =>
+                      setQuantity((quantity) =>
+                        quantity > 1 ? quantity - 1 : 1,
+                      )
+                    }
+                    className="border-2 border-[rgba(0,0,0,0.5)] h-11  w-15 flex justify-center items-center rounded-[6px_0px_0px_6px] cursor-pointer"
+                  >
+                    <FaMinus className="cursor-pointer" />
                   </div>
-                ))}
-              </div>
-            </div>
 
-            <div className="size pt-6 flex gap-6 items-center">
-              <div>
-                <p className=" items-center  text-[20px] leading-5 text-[#000000] tracking-[3%] font-poppins">
-                  Size:{" "}
-                </p>
-              </div>
-              <div className="flex items-center gap-2">
-                {sizes.map((size) => (
-                  <div>
-                    <input
-                      type="radio"
-                      name="radio"
-                      id={`size${size.id}`}
-                      className="hidden size"
-                    />
-                    <label
-                      htmlFor={`size${size.id}`}
-                      className=" cursor-pointer "
-                    >
-                      <span className="font-poppins text-[14px] text-[#000] font-medium w-8 h-8 inline-block rounded-sm border-2 border-[#808080] text-center leading-[30px]">
-                        {size.name}
-                      </span>
-                    </label>
-                  </div>
-                ))}
-              </div>
-            </div>
-            {/* increment decrement functionality */}
-            <div className="qunatity flex pt-6 items-center gap-4">
-              <div className="w-[32%] h-11 flex items-center">
-                <div
-                  onClick={() =>
-                    setQuantity((qunatity) => (qunatity > 1 ? qunatity - 1 : 1))
-                  }
-                  className="border-2 border-[rgba(0,0,0,0.5)] h-11  w-15 flex justify-center items-center rounded-[6px_0px_0px_6px] cursor-pointer"
-                >
-                  <FaMinus className="cursor-pointer" />
-                </div>
-
-                <div className="w-20 h-11 border-t-2 border-b-2 border-[rgba(0,0,0,0.5)] text-center">
-                  <span className="text-[20px] font-poppins font-medium text-[#000000] leading-11 ">
-                    {qunatity}
-                  </span>
-                </div>
-                <div
-                  onClick={() => setQuantity((qunatity) => qunatity + 1)}
-                  className="bg-[#DB4444] text-white  h-11  w-15 flex justify-center items-center rounded-[0px_6px_6px_0px] cursor-pointer"
-                >
-                  <GoPlus className="cursor-pointer text-[22px]" />
-                </div>
-              </div>
-              <div classname="w-[45%] ">
-                <a
-                  href="#"
-                  className="bg-[#DB4444] text-white font-poppins text-[18px] py-3 px-12 rounded-sm font-medium "
-                >
-                  Add to cart
-                </a>
-              </div>
-              <div classname="w-[10%]">
-                <div className="w-10 h-10 border border-[rgba(0,0,0,0.5)] rounded-sm flex items-center justify-center">
-                  <a href="#">
-                    <IoMdHeartEmpty className="text-[32px] text-black" />
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        {/* bottom part */}
-        <div className="grid grid-cols-4 gap-[30px] items-center justify-between mt-15 ">
-          {reletedProdcuts.map((related) => (
-            <div className="product-item">
-              <div className=" bg-[#F5F5F5] py-[35px] px-10 rounded-sm relative">
-                <Link to={`/details/${id}`}>
-                  <img src={related.image} alt="" />
-                </Link>
-                {related.discount ? (
-                  <div className="discount bg-[#DB4444] w-[55px] h-[26px] text-center rounded-sm absolute top-3 left-3">
-                    <span className="text-[12px] text-[#FAFAFA] ">
-                      -{related.discount}%
+                  <div className="w-20 h-11 border-t-2 border-b-2 border-[rgba(0,0,0,0.5)] text-center">
+                    <span className="text-[20px] font-poppins font-medium text-[#000000] leading-11 ">
+                      {quantity}
                     </span>
                   </div>
-                ) : (
-                  ""
-                )}
-              </div>
-              <div className="details pt-4">
-                <h2 className="text-[18px] leading-6 font-poppins text-[#000000] font-medium">
-                  {related.name}
-                </h2>
-                <p className="text-[16px] leading-6 font-poppins font-semibold flex gap-3 py-2">
-                  <span className=" text-[#DB4444]">${related.disPrice}</span>
-                  <del className="text-[rgba(0,0,0,0.5)]">
-                    {" "}
-                    ${related.price}
-                  </del>
-                </p>
-                <div className="raring flex gap-1">
-                  <TiStarFullOutline className="text-[#FFAD33] text-[20px] " />
-                  <TiStarFullOutline className="text-[#FFAD33] text-[20px] " />
-                  <TiStarFullOutline className="text-[#FFAD33] text-[20px] " />
-                  <TiStarFullOutline className="text-[#FFAD33] text-[20px] " />
-                  <TiStarFullOutline className="text-[#FFAD33] text-[20px] " />
-                  <span className="text-[14px] leading-[21px] font-poppins font-semibold text-[rgba(0,0,0,0.5)] ">
-                    ({related.rating})
-                  </span>
+                  <div
+                    onClick={() => setQuantity((quantity) => quantity + 1)}
+                    className="bg-[#DB4444] text-white  h-11  w-15 flex justify-center items-center rounded-[0px_6px_6px_0px] cursor-pointer"
+                  >
+                    <GoPlus className="cursor-pointer text-[22px]" />
+                  </div>
+                </div>
+                <div classname="w-[45%] ">
+                  <a
+                    onClick={handleAddToCart}
+                    className="bg-[#DB4444] text-white font-poppins text-[18px] py-3 px-12 rounded-sm font-medium "
+                  >
+                    Add to cart
+                  </a>
+                </div>
+                <div classname="w-[10%]">
+                  <div className="w-10 h-10 border border-[rgba(0,0,0,0.5)] rounded-sm flex items-center justify-center">
+                    <a href="#">
+                      <IoMdHeartEmpty className="text-[32px] text-black" />
+                    </a>
+                  </div>
                 </div>
               </div>
             </div>
-          ))}
+          </div>
+          {/* bottom part */}
+          <div className="grid grid-cols-4 gap-[30px] items-center justify-between mt-15 ">
+            {reletedProdcuts.map((related) => (
+              <div className="product-item">
+                <div className=" bg-[#F5F5F5] py-[35px] px-10 rounded-sm relative">
+                  <Link to={`/details/${id}`}>
+                    <img src={related.image} alt="" />
+                  </Link>
+                  {related.discount ? (
+                    <div className="discount bg-[#DB4444] w-[55px] h-[26px] text-center rounded-sm absolute top-3 left-3">
+                      <span className="text-[12px] text-[#FAFAFA] ">
+                        -{related.discount}%
+                      </span>
+                    </div>
+                  ) : (
+                    ""
+                  )}
+                </div>
+                <div className="details pt-4">
+                  <h2 className="text-[18px] leading-6 font-poppins text-[#000000] font-medium">
+                    {related.name}
+                  </h2>
+                  <p className="text-[16px] leading-6 font-poppins font-semibold flex gap-3 py-2">
+                    <span className=" text-[#DB4444]">${related.disPrice}</span>
+                    <del className="text-[rgba(0,0,0,0.5)]">
+                      {" "}
+                      ${related.price}
+                    </del>
+                  </p>
+                  <div className="raring flex gap-1">
+                    <TiStarFullOutline className="text-[#FFAD33] text-[20px] " />
+                    <TiStarFullOutline className="text-[#FFAD33] text-[20px] " />
+                    <TiStarFullOutline className="text-[#FFAD33] text-[20px] " />
+                    <TiStarFullOutline className="text-[#FFAD33] text-[20px] " />
+                    <TiStarFullOutline className="text-[#FFAD33] text-[20px] " />
+                    <span className="text-[14px] leading-[21px] font-poppins font-semibold text-[rgba(0,0,0,0.5)] ">
+                      ({related.rating})
+                    </span>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </>
   );
 };
 
