@@ -7,14 +7,17 @@ import { LuUser } from "react-icons/lu";
 import { Link, useLocation } from "react-router";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { authinfo } from "../../Redux/Slice/authSlice";
+import { CiCircleRemove } from "react-icons/ci";
+import { RiDeleteBin6Line } from "react-icons/ri";
 
 const Navbar = () => {
   const location = useLocation();
   const currentLocation = location.pathname;
   console.log(location.pathname);
-
+  const cartItems = useSelector((state) => state.cart.items);
+  console.log(cartItems);
   const auth = getAuth();
   const dispatch = useDispatch();
 
@@ -127,6 +130,30 @@ const Navbar = () => {
           </div>
         </div>
       </nav>
+      <div className="max-w-[300px] bg-[#b8a8a888] h-full rounded-sm pb-5 shadow-md">
+        <div className="relative flex items-center justify-between py-4 px-2 ">
+          <h2 className="text-[30px] font-semibold mt-[40px] text-center mx-auto">Shopping Cart</h2>
+          <CiCircleRemove className="absolute top-2 right-3 text-[40px] text-white cursor-pointer hover:text-[#df4444] duration-300 " />
+        </div>
+        {cartItems.map((item) => (
+          <div className="flex items-center justify-between px-2 py-2">
+            <div className="flex items-center">
+              <img className="w-[50px]" src={item.image} alt="" />
+              <h3 className="text-[16px] font-medium w-[150px] ">
+                {item.title} x {item.quantity}
+              </h3>
+            </div>
+            <div>
+              <RiDeleteBin6Line className="text-[25px] text-white cursor-pointer hover:text-[#df4444] duration-300" />
+            </div>
+          </div>
+        ))}
+        <div className="text-center mt-8 mb-5">
+          <Link to="/cart" className="text-white bg-[#df4444] py-3 px-15 rounded-sm font-medium hover:bg-transparent hover:border border-[#df4444] hover:text-[#df4444] duration-300 ">
+            View Cart Page
+          </Link>
+        </div>
+      </div>
     </>
   );
 };

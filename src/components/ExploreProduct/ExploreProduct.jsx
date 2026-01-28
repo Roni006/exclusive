@@ -12,6 +12,10 @@ import { FaStar } from "react-icons/fa";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { Link } from "react-router";
+import { IoCartOutline } from "react-icons/io5";
+import { useDispatch } from "react-redux";
+import { addToCart } from "../../Redux/Slice/cartSlice";
+import { Bounce, toast } from "react-toastify";
 
 const ExploreProduct = () => {
   const [visible, setVisible] = useState(8);
@@ -21,6 +25,32 @@ const ExploreProduct = () => {
       .get("https://dummyjson.com/products")
       .then((result) => setProducts(result.data.products));
   }, []);
+
+  const dispatch = useDispatch();
+  const [quantity, setQuantity] = useState(1);
+  const handleAddToCart = (product) => {
+    dispatch(
+      addToCart({
+        id: product.id,
+        title: product.title,
+        price: product.price,
+        image: product.thumbnail,
+        quantity,
+      }),
+    );
+
+    toast.success("Product added to cart", {
+      position: "top-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: false,
+      pauseOnHover: true,
+      draggable: true,
+      theme: "colored",
+      transition: Bounce,
+    });
+  };
+
   return (
     <>
       <section className="pt-[150px]">
@@ -38,6 +68,12 @@ const ExploreProduct = () => {
                   <Link to={`/details/${product.id}`}>
                     <img className="mx-auto" src={product.images} alt="" />
                   </Link>
+                  <div>
+                    <IoCartOutline
+                      onClick={() => handleAddToCart(product)}
+                      className="absolute top-5 left-5 cursor-pointer text-[30px] bg-[#df4444a3] hover:bg-[#df4444] duration-300 text-white p-[5px] rounded-sm  "
+                    />
+                  </div>
                 </div>
                 <div className="details pt-4">
                   <h2 className="text-[18px] leading-6 font-poppins text-[#000000] font-medium">
