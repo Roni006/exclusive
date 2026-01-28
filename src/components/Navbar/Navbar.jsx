@@ -6,11 +6,13 @@ import { IoCartOutline } from "react-icons/io5";
 import { LuUser } from "react-icons/lu";
 import { Link, useLocation } from "react-router";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { authinfo } from "../../Redux/Slice/authSlice";
 import { CiCircleRemove } from "react-icons/ci";
 import { RiDeleteBin6Line } from "react-icons/ri";
+import { Bounce, toast } from "react-toastify";
+import { removeCart } from "../../Redux/Slice/cartSlice";
 
 const Navbar = () => {
   const location = useLocation();
@@ -20,6 +22,7 @@ const Navbar = () => {
   console.log(cartItems);
   const auth = getAuth();
   const dispatch = useDispatch();
+  const [openCart, setOpenCart] = useState(false);
 
   useEffect(() => {
     const unsub = onAuthStateChanged(auth, (user) => {
@@ -35,6 +38,20 @@ const Navbar = () => {
     });
     return () => unsub();
   }, []);
+
+  const handleRemove = (id) => {
+    dispatch(removeCart(id));
+    toast.success("Product removed from cart", {
+      position: "top-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: false,
+      pauseOnHover: true,
+      draggable: true,
+      theme: "colored",
+      transition: Bounce,
+    });
+  };
 
   return (
     <>
@@ -114,9 +131,10 @@ const Navbar = () => {
                   </div>
 
                   <div className="w-8 h-8 hover:hover:bg-[#DB4444] flex justify-center items-center rounded-full cursor-pointer group">
-                    <Link to="cart">
-                      <IoCartOutline className="text-[18px] text-[#000000] group-hover:text-white duration-200 " />
-                    </Link>
+                    <IoCartOutline
+                      onClick={() => setOpenCart(true)}
+                      className="text-[18px] text-[#000000] group-hover:text-white duration-200 "
+                    />
                   </div>
 
                   <div className="w-8 h-8 hover:hover:bg-[#DB4444] flex justify-center items-center rounded-full cursor-pointer group">
@@ -130,30 +148,66 @@ const Navbar = () => {
           </div>
         </div>
       </nav>
-      <div className="max-w-[300px] bg-[#b8a8a888] h-full rounded-sm pb-5 shadow-md">
-        <div className="relative flex items-center justify-between py-4 px-2 ">
-          <h2 className="text-[30px] font-semibold mt-[40px] text-center mx-auto">Shopping Cart</h2>
-          <CiCircleRemove className="absolute top-2 right-3 text-[40px] text-white cursor-pointer hover:text-[#df4444] duration-300 " />
-        </div>
-        {cartItems.map((item) => (
-          <div className="flex items-center justify-between px-2 py-2">
-            <div className="flex items-center">
-              <img className="w-[50px]" src={item.image} alt="" />
-              <h3 className="text-[16px] font-medium w-[150px] ">
-                {item.title} x {item.quantity}
-              </h3>
+      {openCart && (
+        <>
+          {/* Overlay */}
+          <div
+            onClick={() => setOpenCart(false)}
+            className="fixed inset-0 bg-black/60 z-40"
+          />
+
+          {/* Cart */}
+          <div
+            className="max-w-[500px] bg-[#b8a8a888] h-full rounded-sm pb-5 shadow-md 
+      border border-[#df4444] fixed z-50 top-12 right-0 duration-300 transition-all"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="relative flex items-center justify-between py-4 px-2 ">
+              <h2 className="text-[30px] font-semibold mt-10 text-center mx-auto">
+                Shopping Cart
+              </h2>
+
+              <CiCircleRemove
+                onClick={() => setOpenCart(false)}
+                className="absolute top-2 right-3 text-[40px] text-white cursor-pointer hover:text-[#df4444] duration-300 "
+              />
             </div>
-            <div>
-              <RiDeleteBin6Line className="text-[25px] text-white cursor-pointer hover:text-[#df4444] duration-300" />
+
+            {cartItems.map((item) => (
+              <div
+                key={item.id}
+                className="flex bg-[#afabab] mb-3 items-center justify-between px-2 py-2 mx-2 rounded-md gap-20"
+              >
+                {cartItems.length !== 0 ? (
+                  <div className="flex items-center gap-2">
+                    <img className="w-[50px]" src={item.image} alt="" />
+                    <h3 className="text-[16px] font-medium w-[150px] ">
+                      {item.title} x {item.quantity}
+                    </h3>
+                    <div>
+                      <RiDeleteBin6Line
+                        onClick={() => handleRemove(item.id)}
+                        className="text-[25px] text-white cursor-pointer hover:text-[#df4444] duration-300"
+                      />
+                    </div>
+                  </div>
+                ) : (
+                  "none"
+                )}
+              </div>
+            ))}
+
+            <div className="text-center mt-8 mb-5">
+              <Link
+                to="/cart"
+                className="text-white bg-[#df4444] py-3 px-6 rounded-sm font-medium hover:bg-transparent hover:border border-[#df4444] hover:text-[#df4444] duration-300"
+              >
+                View Cart Page
+              </Link>
             </div>
           </div>
-        ))}
-        <div className="text-center mt-8 mb-5">
-          <Link to="/cart" className="text-white bg-[#df4444] py-3 px-15 rounded-sm font-medium hover:bg-transparent hover:border border-[#df4444] hover:text-[#df4444] duration-300 ">
-            View Cart Page
-          </Link>
-        </div>
-      </div>
+        </>
+      )}
     </>
   );
 };

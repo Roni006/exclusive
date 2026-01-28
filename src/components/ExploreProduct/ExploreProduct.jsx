@@ -15,7 +15,7 @@ import { Link } from "react-router";
 import { IoCartOutline } from "react-icons/io5";
 import { useDispatch } from "react-redux";
 import { addToCart } from "../../Redux/Slice/cartSlice";
-import { Bounce, toast } from "react-toastify";
+import { Bounce, toast, ToastContainer } from "react-toastify";
 
 const ExploreProduct = () => {
   const [visible, setVisible] = useState(8);
@@ -52,7 +52,8 @@ const ExploreProduct = () => {
   };
 
   return (
-    <>
+    <> 
+      <ToastContainer />
       <section className="pt-[150px]">
         <div className="container border-b border-[rgba(0,0,0,0.25)]">
           <div className="title pb-8">
