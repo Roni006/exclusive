@@ -7,7 +7,7 @@ const MainRoot = () => {
         <>
             <Navbar />
             <Outlet />
-            <Footer />
+            {/* <Footer /> */}
         </>
     )
 }

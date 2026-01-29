@@ -81,18 +81,7 @@ const Login = () => {
             transition: Bounce,
           });
         });
-      //! firebase
-      // toast.success("Successfully Logged in", {
-      //   position: "top-right",
-      //   autoClose: 5000,
-      //   hideProgressBar: false,
-      //   closeOnClick: false,
-      //   pauseOnHover: true,
-      //   draggable: true,
-      //   progress: undefined,
-      //   theme: "colored",
-      //   transition: Bounce,
-      // });
+      //! firebase 
     }
   };
   return (

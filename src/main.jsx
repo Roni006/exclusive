@@ -16,6 +16,9 @@ import CategoreyProduct from "./components/CategoreyProduct/CategoreyProduct.jsx
 import firebaseConfig from "./firebaseConfig .js";
 import store from "./Redux/store.js";
 import { Provider } from "react-redux";
+import Shop from "./components/Shop/Shop.jsx";
+import AboutUs from "./components/About/About.jsx";
+import Contact from "./components/Contact/Contact.jsx";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -29,6 +32,9 @@ const router = createBrowserRouter([
       { path: "details/:id", Component: ProductDetails },
       { path: "user", Component: Profile },
       { path: "login", Component: Login },
+      { path: "shop", Component: Shop },
+      { path: "about", Component: AboutUs },
+      { path: "contact", Component: Contact },
       { path: "category/product/:slug", Component: CategoreyProduct },
       { path: "*", Component: NotFount },
     ],

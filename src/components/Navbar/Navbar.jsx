@@ -11,8 +11,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { authinfo } from "../../Redux/Slice/authSlice";
 import { CiCircleRemove } from "react-icons/ci";
 import { RiDeleteBin6Line } from "react-icons/ri";
-import { Bounce, toast } from "react-toastify";
-import { removeCart } from "../../Redux/Slice/cartSlice";
+import { Bounce, toast, ToastContainer } from "react-toastify";
+import { clearCart, removeCart } from "../../Redux/Slice/cartSlice";
 
 const Navbar = () => {
   const location = useLocation();
@@ -53,8 +53,25 @@ const Navbar = () => {
     });
   };
 
+  const handleClearCart = () => {
+    dispatch(clearCart());
+    if (clearCart.length > 1) {
+      toast.success("Removed all items from cart", {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: false,
+        pauseOnHover: true,
+        draggable: true,
+        theme: "colored",
+        transition: Bounce,
+      });
+    }
+  };
+
   return (
     <>
+      <ToastContainer />
       <nav className="border-b border-[rgba(0,0,0,0.25)]">
         <div className="bg-[#000000]">
           <div className="container">
@@ -99,14 +116,17 @@ const Navbar = () => {
                   <Link to="/">Home</Link>
                 </li>
                 <li>
-                  <a href="#">About</a>
+                  <a href="/about">About</a>
                 </li>
                 <li>
-                  <a href="#">Contact</a>
+                  <Link to="/shop">Shop</Link>
+                </li>
+                <li>
+                  <Link to="/contact">Contact</Link>
                 </li>
                 <li>
                   <Link to="signup">Sign Up</Link>
-                </li>{" "}
+                </li>
               </ul>
             </div>
             <div className="w-[30%] flex items-center justify-end gap-6">
@@ -148,6 +168,8 @@ const Navbar = () => {
           </div>
         </div>
       </nav>
+
+      {/* cart/side bar */}
       {openCart && (
         <>
           {/* Overlay */}
@@ -158,12 +180,17 @@ const Navbar = () => {
 
           {/* Cart */}
           <div
-            className="max-w-[500px] bg-[#b8a8a888] h-full rounded-sm pb-5 shadow-md 
-      border border-[#df4444] fixed z-50 top-12 right-0 duration-300 transition-all"
+            className="max-w-[500px] bg-[#b8a8a888] h-full rounded-sm pb-5 shadow-md border border-[#df4444] fixed z-50 top-12 right-0 duration-300 transition-all"
             onClick={(e) => e.stopPropagation()}
           >
             <div className="relative flex items-center justify-between py-4 px-2 ">
-              <h2 className="text-[30px] font-semibold mt-10 text-center mx-auto">
+              <a
+                onClick={handleClearCart}
+                className="absolute left-5 top-5 bg-[#df4444] text-white px-2 rounded-md cursor-pointer"
+              >
+                clearCart
+              </a>
+              <h2 className="text-[30px] font-semibold mt-10 text-center mx-auto px-10">
                 Shopping Cart
               </h2>
 
