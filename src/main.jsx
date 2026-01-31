@@ -18,7 +18,8 @@ import store from "./Redux/store.js";
 import { Provider } from "react-redux";
 import Shop from "./components/Shop/Shop.jsx";
 import AboutUs from "./components/About/About.jsx";
-import Contact from "./components/Contact/Contact.jsx";
+import Contact from "./components/Contact/Contact.jsx"; 
+import SearchProduct from "./components/Search/Search.jsx";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -35,7 +36,8 @@ const router = createBrowserRouter([
       { path: "shop", Component: Shop },
       { path: "about", Component: AboutUs },
       { path: "contact", Component: Contact },
-      { path: "category/product/:slug", Component: CategoreyProduct },
+      { path: "search/product/:keyword", Component: SearchProduct },
+      { path: "category/product/:slug", Component: CategoreyProduct }, 
       { path: "*", Component: NotFount },
     ],
   },

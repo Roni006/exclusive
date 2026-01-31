@@ -18,12 +18,6 @@ function App() {
       <BrowseCategory />
       <BestSellingProduct />
       <ExploreProduct />
-      {/*  ! ================= */}
-      {/* <Login/> */}
-      {/* <Registration/> */}
-      {/* <BIllingDetails/> */}
-
-      {/* <ProductDetails/> */}
     </>
   )
 }

@@ -29,9 +29,9 @@ const Shop = () => {
     });
   }, [filterBy, sortBy]);
 
-  /* =====================
-     FETCH CATEGORIES (SAFE)
-  ====================== */
+  /*
+     FETCH CATEGORIES 
+  */
   useEffect(() => {
     axios.get("https://dummyjson.com/products/categories").then((res) => {
       // handle string[] and object[] both
@@ -48,9 +48,7 @@ const Shop = () => {
     });
   }, []);
 
-  /* =====================
-     PAGINATION
-  ====================== */
+  /*  PAGINATION  */
   const itemsPerPage = 8;
   const [itemOffset, setItemOffset] = useState(0);
 
@@ -88,7 +86,9 @@ const Shop = () => {
         <div className="flex gap-6">
           {/* CATEGORY */}
           <div className="w-1/5">
-            <h2 className="text-[#df4444] text-[30px] mb-4 font-medium">Category</h2>
+            <h2 className="text-[#df4444] text-[30px] mb-4 font-medium">
+              Category
+            </h2>
 
             <div className="bg-gray-100 p-4 rounded shadow mb-10">
               {categories.map((cat) => (
@@ -100,7 +100,7 @@ const Shop = () => {
                 >
                   {cat.name}
                 </p>
-              ))} 
+              ))}
             </div>
           </div>
 

@@ -1,9 +1,4 @@
 import phone from "../../assets/cate-icon/phone.svg";
-import computer from "../../assets/cate-icon/computer.svg";
-import watch from "../../assets/cate-icon/watch.svg";
-import camera from "../../assets/cate-icon/camera.svg";
-import headphone from "../../assets/cate-icon/headphone.svg";
-import gaming from "../../assets/cate-icon/gaming.svg";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { Link } from "react-router";
@@ -13,28 +8,7 @@ const BrowseCategory = () => {
     axios
       .get("https://dummyjson.com/products/categories")
       .then((result) => setCategories(result.data));
-  }, []);
-
-  //    const logos = [
-  //     {
-  //       logo: phone,
-  //     },
-  //     {
-  //       logo: computer,
-  //     },
-  //     {
-  //       logo: watch,
-  //     },
-  //     {
-  //       logo: camera,
-  //     },
-  //     {
-  //       logo: headphone,
-  //     },
-  //     {
-  //       logo: gaming,
-  //     },
-  //   ];
+  }, []); 
   return (
     <>
       <section className="pt-20 pb-10">
@@ -56,11 +30,7 @@ const BrowseCategory = () => {
                   </div>
                 </div>
               </Link>
-            ))}
-
-            {/* {logos.map((logo) => (
-              <img className="mx-auto" src={logo.logo} alt="" />
-            ))} */}
+            ))} 
           </div>
         </div>
       </section>
